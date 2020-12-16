@@ -27,4 +27,5 @@
 1. Next up, head to [vercel.com](https://vercel.com/) and hit "Import Project"
 2. Select "Import Git Repository"
 3. Enter the URL of your fork, and hit continue
-4. You need to set up your `.env` file, but on the production vercel deployment side. However
+   1. We now need to set up your `.env` file, but on the production vercel deployment side.
+4. When it loads, click on "Environment Variables" and one by one, add `CLIENT_ID`, `CLIENT_SECRET`, etc...
