@@ -1,6 +1,6 @@
 # `next-discord-oauth`
 
-### A simple guide to deploy Next.js with Discord OAuth to Vercel
+### A simple guide & easy-to-use template to deploy Next.js with Discord OAuth to Vercel
 
 ## Setting up
 
