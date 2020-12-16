@@ -37,7 +37,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     scope,
   }).toString();
 
-  const { access_token = null } = await fetch(
+  const { access_token = null, token_type = "Bearer" } = await fetch(
     "https://discord.com/api/oauth2/token",
     {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -53,7 +53,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const me: DiscordUser | { unauthorized: true } = await fetch(
     "http://discord.com/api/users/@me",
     {
-      headers: { Authorization: `Bearer ${access_token}` },
+      headers: { Authorization: `${token_type} ${access_token}` },
     }
   ).then((res) => res.json());
 
