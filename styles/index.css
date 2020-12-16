@@ -1,0 +1,13 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system, sans-serif;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
