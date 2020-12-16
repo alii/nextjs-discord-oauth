@@ -9,7 +9,7 @@ export function parseUser(ctx: GetServerSidePropsContext): DiscordUser | null {
     return null;
   }
 
-  const { token } = parse(ctx.req.headers.cookie);
+  const token = parse(ctx.req.headers.cookie)[config.cookieName];
 
   if (!token) {
     return null;
