@@ -37,25 +37,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     scope,
   }).toString();
 
-  const { access_token = null, token_type = "Bearer" } = await fetch(
-    "https://discord.com/api/oauth2/token",
-    {
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      method: "POST",
-      body,
-    }
-  ).then((res) => res.json());
+  const { access_token = null, token_type = "Bearer" } = await fetch("https://discord.com/api/oauth2/token", {
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    method: "POST",
+    body,
+  }).then((res) => res.json());
 
   if (!access_token || typeof access_token !== "string") {
     return res.redirect(OAUTH_URI);
   }
 
-  const me: DiscordUser | { unauthorized: true } = await fetch(
-    "http://discord.com/api/users/@me",
-    {
-      headers: { Authorization: `${token_type} ${access_token}` },
-    }
-  ).then((res) => res.json());
+  const me: DiscordUser | { unauthorized: true } = await fetch("http://discord.com/api/users/@me", {
+    headers: { Authorization: `${token_type} ${access_token}` },
+  }).then((res) => res.json());
 
   if (!("id" in me)) {
     return res.redirect(OAUTH_URI);
